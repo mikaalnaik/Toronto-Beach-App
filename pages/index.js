@@ -1,6 +1,18 @@
 import Head from 'next/head'
+import { useState, useEffect } from 'react';
+import {
+  getAllBeachesAllTime,
+} from '../utils/city-data';
 
 export default function Home() {
+  const [beachData, setBeachData] = useState([]);
+
+  useEffect(() => {
+    getAllBeachesAllTime()
+  }, []);
+
+
+
   return (
     <div className="container">
       <Head>
@@ -163,3 +175,7 @@ export default function Home() {
     </div>
   )
 }
+
+
+
+
