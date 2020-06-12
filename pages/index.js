@@ -1,4 +1,5 @@
 import Head from 'next/head'
+const fetch = require('node-fetch');
 import { useState, useEffect } from 'react';
 import {
   getAllBeachesAllTime,
@@ -8,7 +9,10 @@ export default function Home() {
   const [beachData, setBeachData] = useState([]);
 
   useEffect(() => {
-    getAllBeachesAllTime()
+
+    // fetch('https://app.toronto.ca/tpha/ws/beaches/history/all.xml?v=1.0');
+
+    // getAllBeachesAllTime()
   }, []);
 
 

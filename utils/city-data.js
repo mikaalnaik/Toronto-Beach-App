@@ -1,6 +1,6 @@
-// const fetch = require('node-fetch');
-// const convert = require('xml-js');
-// const _ = require('lodash');
+const fetch = require('node-fetch');
+const convert = require('xml-js');
+const _ = require('lodash');
 // const BeachConstants = require('../beachConstants');
 
 export function getAllBeachesAllTime() {
