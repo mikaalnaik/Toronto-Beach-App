@@ -24,7 +24,6 @@ export default function Home() {
         </h1>
         {beachData.map((beach) => (
           <div>
-
             <BeachCard beach={beach}/>
           </div>
         ))}
