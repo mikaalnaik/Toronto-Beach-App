@@ -6,7 +6,7 @@ export default function Home() {
   const [beachData, setBeachData] = useState([]);
 
   useEffect(() => {
-    fetch('api/hello')
+    fetch('api/getBeachLatest')
       .then((res) => res.text())
       .then((data) => setBeachData(JSON.parse(data)));
   }, []);
