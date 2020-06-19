@@ -3,8 +3,7 @@ import Head from 'next/head';
 const fetch = require('node-fetch');
 import BeachCard from '@/components/BeachCard/index';
 
-
-export default function Home() {
+  export default function Home() {
   const [beachData, setBeachData] = useState([]);
 
   useEffect(() => {
