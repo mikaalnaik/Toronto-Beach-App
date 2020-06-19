@@ -5409,6 +5409,15 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
+torontobeach@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/torontobeach/-/torontobeach-1.0.19.tgz#022f2a09f2e5be6a9409fbcbfe0d28efdc5a1dd4"
+  integrity sha512-QSfn7fNHQT62+gQnHQzGiuyHQQQ0UQT34y5XpbKj388Y5PlfM0JJYglnKTLLvWJV5B16NDIKfsQs100SlSsi/g==
+  dependencies:
+    lodash.get "^4.4.2"
+    node-fetch "^2.6.0"
+    xml-js "^1.6.11"
+
 tr46@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-1.0.1.tgz#a8b13fd6bfd2489519674ccde55ba3693b706d09"

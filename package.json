@@ -15,6 +15,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "sass": "^1.26.8",
+    "torontobeach": "^1.0.19",
     "xml-js": "^1.6.11"
   },
   "proxy": "http://localhost:4000"
