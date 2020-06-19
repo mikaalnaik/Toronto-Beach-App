@@ -6,11 +6,15 @@ import BeachCard from '@/components/BeachCard/index';
 
 export default function Home() {
 const [beachData, setBeachData] = useState([]);
+const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch('api/getBeachLatest')
       .then((res) => res.text())
-      .then((data) => setBeachData(JSON.parse(data)));
+      .then((data) => {
+        setBeachData(JSON.parse(data))
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -22,6 +26,13 @@ const [beachData, setBeachData] = useState([]);
         <h1>
           Toronto Beach App
         </h1>
+          {
+            isLoading && (
+              <div>
+                loadings
+              </div>
+            )
+          }
         {beachData.map((beach) => (
           <div>
             <BeachCard beach={beach}/>
