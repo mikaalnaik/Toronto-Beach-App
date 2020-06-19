@@ -1,35 +1,26 @@
-import Head from 'next/head'
+import Head from 'next/head';
 const fetch = require('node-fetch');
 import { useState, useEffect } from 'react';
-import {
-  getAllBeachesAllTime,
-} from '../utils/city-data';
+import { getAllBeachesAllTime } from '../utils/city-data';
 
 export default function Home() {
   const [beachData, setBeachData] = useState([]);
 
   useEffect(() => {
-
-    // fetch('https://app.toronto.ca/tpha/ws/beaches/history/all.xml?v=1.0');
-
-    // getAllBeachesAllTime()
+    fetch('api/hello')
+      .then((res) => res.text())
+      .then((data) => setBeachData(data));
   }, []);
 
-
-
   return (
-    <div className="container">
+    <div className='container'>
       <Head>
         <title>Create Next App</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <main>
-        <h1 className="title">
-          Toronto Beach App
-        </h1>
+        <h1 className='title'>Toronto Beach App</h1>
       </main>
-
 
       <style jsx>{`
         .container {
@@ -177,9 +168,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
-
-
-
-

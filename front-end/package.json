@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "lodash": "^4.17.15",
+    "lodash.get": "^4.4.2",
     "next": "9.4.2",
     "node-fetch": "^2.6.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "xml-js": "^1.6.11"
-  }
+  },
+  "proxy": "http://localhost:4000"
 }
