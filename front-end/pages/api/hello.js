@@ -4,7 +4,6 @@ const BeachFunctions = require('../../beachData');
 
 export default async (req, res) => {
   res.statusCode = 200;
-  const test = await BeachFunctions.getAllBeachesLatest();
-  console.log({ test });
-  res.json({ name: test });
+  const beachData = await BeachFunctions.getAllBeachesLatest();
+  res.json(beachData);
 };

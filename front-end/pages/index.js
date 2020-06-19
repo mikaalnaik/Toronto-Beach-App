@@ -1,7 +1,6 @@
 import Head from 'next/head';
 const fetch = require('node-fetch');
 import { useState, useEffect } from 'react';
-import { getAllBeachesAllTime } from '../utils/city-data';
 
 export default function Home() {
   const [beachData, setBeachData] = useState([]);
@@ -9,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     fetch('api/hello')
       .then((res) => res.text())
-      .then((data) => setBeachData(data));
+      .then((data) => setBeachData(JSON.parse(data)));
   }, []);
 
   return (
@@ -20,6 +19,13 @@ export default function Home() {
 
       <main>
         <h1 className='title'>Toronto Beach App</h1>
+        {beachData.map((beach) => (
+          <div>
+            <h2>{beach.name}</h2>
+            <b>{beach.eColiCount}</b>
+            <div>{beach.beachAdvisory}</div>
+          </div>
+        ))}
       </main>
 
       <style jsx>{`
