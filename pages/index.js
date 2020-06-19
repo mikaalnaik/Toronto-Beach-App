@@ -1,8 +1,6 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 const fetch = require('node-fetch');
-import { useState, useEffect } from 'react';
-
-
 
 export default function Home() {
   const [beachData, setBeachData] = useState([]);
@@ -16,9 +14,8 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Toronto Beach App</title>
       </Head>
-
       <main>
         <h1>
           Toronto Beach App
