@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 const fetch = require('node-fetch');
+import styles from './Home.module.scss'
 import BeachCard from '@/components/BeachCard/index';
 
 export default function Home() {
@@ -13,7 +14,7 @@ const [beachData, setBeachData] = useState([]);
   }, []);
 
   return (
-    <div>
+    <div className={styles.home}>
       <Head>
         <title>Toronto Beach App</title>
       </Head>
