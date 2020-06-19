@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 const fetch = require('node-fetch');
+import BeachCard from '@/components/BeachCard/index';
+
 
 export default function Home() {
   const [beachData, setBeachData] = useState([]);
@@ -22,9 +24,8 @@ export default function Home() {
         </h1>
         {beachData.map((beach) => (
           <div>
-            <h2>{beach.name}</h2>
-            <b>{beach.eColiCount}</b>
-            <div>{beach.beachAdvisory}</div>
+
+            <BeachCard beach={beach}/>
           </div>
         ))}
       </main>
