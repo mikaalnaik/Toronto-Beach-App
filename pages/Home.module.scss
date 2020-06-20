@@ -1,5 +1,18 @@
-
+@import 'styles/imports';
 
 .home {
   padding: 2rem;
+}
+
+.beach-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include desktop {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
