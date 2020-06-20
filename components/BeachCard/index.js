@@ -25,10 +25,7 @@ const BeachCard = ({ beach }) => {
           Status:
           <LoadingSkeleton value={beachState} />
         </div>
-        <div>
-          Sample Date:
-          {moment(sampleDate).format('MMMM Do, YYYY')}
-        </div>
+        <div>Sampled on:{moment(sampleDate).fromNow()}</div>
       </div>
     </div>
   );
