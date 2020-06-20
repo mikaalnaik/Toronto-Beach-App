@@ -20,6 +20,19 @@
   margin-bottom: .5rem;
 }
 
+.status {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.status-green {
+  background-color: green;
+}
+.status-red {
+  background-color: red;
+}
+
 .image {
   width: 100%;
   object-fit: contain;

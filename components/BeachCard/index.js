@@ -4,14 +4,7 @@ import LoadingSkeleton from '@/components/LoadingSkeleton/index';
 import moment from 'moment';
 
 const BeachCard = ({ beach }) => {
-  const {
-    name,
-    eColiCount,
-    beachAdvisory,
-    sampleDate,
-    beachState,
-    beachID,
-  } = beach;
+  const { name, eColiCount, sampleDate, beachState, beachID } = beach;
   return (
     <div className={styles['beachcard']}>
       <img src={`/beach-${beachID}.jpg`} className={styles.image} />
@@ -23,7 +16,12 @@ const BeachCard = ({ beach }) => {
         </div>
         <div className={styles.beachstatus}>
           Status:
-          <LoadingSkeleton value={beachState} />
+          <LoadingSkeleton
+            value={beachState}
+            className={`${styles.status} ${
+              eColiCount < 100 ? styles['status-green'] : styles['status-red']
+            }`}
+          />
         </div>
         <div>Sampled on:{moment(sampleDate).fromNow()}</div>
       </div>
