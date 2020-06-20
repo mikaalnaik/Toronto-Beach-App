@@ -8,6 +8,9 @@
       "@/constants/*": [
         "constants/*"
       ],
+      "@/styles/*": [
+        "styles/*"
+      ],
     }
   }
 }
