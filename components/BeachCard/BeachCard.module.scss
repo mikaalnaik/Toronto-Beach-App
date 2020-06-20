@@ -1,16 +1,32 @@
-
+@import 'styles/imports';
 
 .beachcard {
-  border: 1px solid black;
-  padding: 1rem;
+  border: 1px solid lightgray;
   border-radius: 4px;
-  margin-bottom: 2rem;
+  height: 100%;
 }
 
 .title {
   font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.ecoli {
+  font-weight: bold;
+  margin-bottom: .5rem;
+}
+
+.beachstatus {
+  margin-bottom: .5rem;
 }
 
 .image {
-  max-width: 10rem;
+  width: 100%;
+  object-fit: contain;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+.beachcard-content {
+  padding: 1rem;
 }
