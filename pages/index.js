@@ -21,6 +21,8 @@ export default function Home() {
       </Head>
       <main>
         <h1>Toronto Beach App</h1>
+        <h3>Show respect for the health of others and for the beauty of our natural spaces.</h3>
+        <h5>Keep 2 meteres apart, wear a mask, wash your hands.</h5>
         <div className={styles['beach-list']}>
           {beachData.map((beach) => (
             <div>
