@@ -41,8 +41,9 @@
   }
 }
 
-.directions {
+.video-card {
   border-radius: 10px;
+  margin-bottom: 2rem;
   height:100px;
   position:relative;
   display:inline-block;
@@ -55,21 +56,40 @@
   }
 }
 
+.stat-title-row {
+  display: flex;
+  justify-content: space-between;
+ }
+
+
+.stat-title {
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-weight: 500;
+}
+
 .video {
   border-radius: 10px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: grayscale(40%);
+  filter: grayscale(100%) contrast(20%) sepia(123%) hue-rotate(180deg) saturate(200%);
 }
 
 .directions-title {
   padding: 2rem;
   font-size: 24px;
   position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   color: white;
   z-index: 1;
+}
+
+.ecoli-title {
+  // font-size: 1 0px;
 }
 
 .latest {

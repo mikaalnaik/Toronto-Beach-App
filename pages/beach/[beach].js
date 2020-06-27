@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './BeachPage.module.scss';
 import Link from 'next/link';
 import beachRouteMatch from '@/utils/beachRouteMatch';
+import { daysAgo } from '@/utils/time';
 import BeachMap from '@/components/GoogleMaps/index'
 import { beachPositions } from '@/constants/beachPositions';
 
@@ -32,35 +33,38 @@ const BeachPage = ({ beach }) => {
     <div className={styles.beach}>
         <TopSection beachData={beachData} beachID={beachID}/>
         {/* <LatestStats data={latestData}/> */}
-        {/* <DirectionsCard data={latestData} /> */}
-        <BeachMap positionData={positionData} />
-        {/* <div>
-          {beachData.map((point, index) => {
-            return (
-            <div key={index}>
-              {point.eColiCount}
-            </div>
-            )
-          })}
-        </div> */}
+        { latestData && <StatCard data={latestData} /> }
+        <BeachMap positionData={positionData} beachName={beachData[0]?.name}/>
     </div>
   )
 }
 
 
-const DirectionsCard = ({ data }) => {
-
-  const goToMap = () => {
-  }
+const StatCard = ({ data }) => {
+  const safetyMessage = data.eColiCount < 100  && data.eColiCount ? 'Safe to swim' : 'Not safe';
+  const eColiCount = data.eColiCount ? data.eColiCount : 'No data';
 
   return (
-    <div className={styles.directions} onClick={goToMap}>
-      <div className={styles['directions-title']}>
-      Get Directions
+    <div>
+      <div className={styles['stat-title-row']}>
+      <h4 className={styles['stat-title']}>
+        Latest Reading from the city
+      </h4>
+        {daysAgo(data.sampleDate)}
       </div>
-      <video className={styles.video} video autoPlay loop muted>
-        <source id="mp4" src="/waves.mp4" type="video/mp4"/>
-      </video>
+      <div className={styles['video-card']} >
+        <div className={styles['directions-title']}>
+          <div>
+            {safetyMessage}
+          </div>
+          <div className={styles['ecoli-title']}>
+            E.coli: {eColiCount}
+          </div>
+        </div>
+        <video className={styles.video} video autoPlay loop muted>
+          <source id="mp4" src="/waves.mp4" type="video/mp4"/>
+        </video>
+      </div>
     </div>
   )
 }
@@ -85,18 +89,6 @@ const TopSection = ({ beachData, beachID }) => {
         />
     </div>
   )
-}
-
-const LatestStats = ({ data }) => {
-  if (data) {
-    return (
-      <div className={styles.latest}>
-        Latest: {data.eColiCount}
-      </div>
-    )
-  } else {
-    return null
-  }
 }
 
 export async function getServerSideProps(ctx) {
