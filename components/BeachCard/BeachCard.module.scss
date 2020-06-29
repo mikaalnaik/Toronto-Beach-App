@@ -6,6 +6,7 @@
   height: 100%;
   transform: translateY(0px);
   transition: all 600ms ease;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 12px 35px 0 rgba(32,52,89,0.25);
