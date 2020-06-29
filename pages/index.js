@@ -10,14 +10,15 @@ export default function Home() {
 
   useEffect(() => {
     fetch('api/getBeachLatest')
-      .then((res) => res.text())
-      .then((data) => setBeachData(JSON.parse(data)));
+      .then(res => res.text())
+      .then(data => setBeachData(JSON.parse(data)));
   }, []);
 
   return (
     <div className={styles.home}>
       <Head>
         <title>Toronto Beach App</title>
+        <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
       </Head>
       <main>
         <h1>Toronto Beach App</h1>
