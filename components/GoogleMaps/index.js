@@ -1,7 +1,9 @@
 import GoogleMapReact from 'google-map-react';
-import styles from './BeachMap.module.scss'
+import styles from './BeachMap.module.scss';
 
-const BeachMap = ({ positionData }) => {
+const Marker = ({ title }) => <div className={styles.marker}> {title} </div>;
+
+const BeachMap = ({ positionData, beachName }) => {
   return (
     <div className={styles.map}>
       <GoogleMapReact
@@ -11,9 +13,15 @@ const BeachMap = ({ positionData }) => {
           lng: positionData.coordinates.longitude,
         }}
         defaultZoom={15}
-      />
+      >
+        <Marker
+          title={beachName}
+          lat={positionData.coordinates.latitude}
+          lng={positionData.coordinates.longitude}
+        />
+      </GoogleMapReact>
     </div>
-  )
-}
+  );
+};
 
 export default BeachMap;

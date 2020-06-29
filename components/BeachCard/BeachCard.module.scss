@@ -4,6 +4,13 @@
   border: 1px solid lightgray;
   border-radius: 4px;
   height: 100%;
+  transform: translateY(0px);
+  transition: all 600ms ease;
+
+  &:hover {
+    box-shadow: 0 12px 35px 0 rgba(32,52,89,0.25);
+    transform: translateY(-20px);
+  }
 }
 
 .title {
