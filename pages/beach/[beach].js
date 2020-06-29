@@ -3,41 +3,41 @@ import styles from './BeachPage.module.scss';
 import Link from 'next/link';
 import beachRouteMatch from '@/utils/beachRouteMatch';
 import { daysAgo } from '@/utils/time';
-import BeachMap from '@/components/GoogleMaps/index'
-import { beachPositions } from '@/constants/beachPositions';
+import BeachMap from '@/components/GoogleMaps/index';
+import { beachPositions } from '@/utils/beachPositions';
 
 const BeachPage = ({ beach }) => {
-  const [beachID] = useState(beachRouteMatch(beach))
+  const [beachID] = useState(beachRouteMatch(beach));
   const [beachData, setBeachData] = useState([]);
   const [latestData, setLatestData] = useState(null);
-  const [positionData, setPositionData] = useState(beachPositions(beachID))
+  const [positionData, setPositionData] = useState(beachPositions(beachID));
 
   useEffect(() => {
     fetch('../api/getBeachThirtyDays', {
       method: 'POST',
       body: JSON.stringify({
         beachID,
-      })
+      }),
     })
-    .then(res => res.json())
-    .then(data => stripLatestReadingFromDataSet(data));
+      .then(res => res.json())
+      .then(data => stripLatestReadingFromDataSet(data));
   }, []);
 
   const stripLatestReadingFromDataSet = data => {
     const firstDataPoint = data.shift();
     setBeachData(data);
-    setLatestData(firstDataPoint)
-  }
+    setLatestData(firstDataPoint);
+  };
 
   return (
     <div className={styles.beach}>
-        <TopSection beachData={beachData} beachID={beachID}/>
-        {/* <LatestStats data={latestData}/> */}
-        { latestData && <StatCard data={latestData} /> }
-        <BeachMap positionData={positionData} beachName={beachData[0]?.name}/>
+      <TopSection beachData={beachData} beachID={beachID}/>
+      {/* <LatestStats data={latestData}/> */}
+      { latestData && <StatCard data={latestData} /> }
+      <BeachMap positionData={positionData} beachName={beachData[0]?.name}/>
     </div>
-  )
-}
+  );
+};
 
 
 const StatCard = ({ data }) => {
@@ -47,9 +47,9 @@ const StatCard = ({ data }) => {
   return (
     <div>
       <div className={styles['stat-title-row']}>
-      <h4 className={styles['stat-title']}>
+        <h4 className={styles['stat-title']}>
         Latest Reading from the city
-      </h4>
+        </h4>
         {daysAgo(data.sampleDate)}
       </div>
       <div className={styles['video-card']} >
@@ -66,13 +66,13 @@ const StatCard = ({ data }) => {
         </video>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const TopSection = ({ beachData, beachID }) => {
   return (
     <div>
-       <div className={styles.header}>
+      <div className={styles.header}>
         <h1>
           { beachData ? beachData[0]?.name : ''}
         </h1>
@@ -82,14 +82,14 @@ const TopSection = ({ beachData, beachID }) => {
           </a>
         </Link>
       </div>
-        <img
-          src={`/beach-${beachID}.jpg`}
-          alt={`Illustration of ${beachData[0]?.name}`}
-          className={styles.image}
-        />
+      <img
+        src={`/beach-${beachID}.jpg`}
+        alt={`Illustration of ${beachData[0]?.name}`}
+        className={styles.image}
+      />
     </div>
-  )
-}
+  );
+};
 
 export async function getServerSideProps(ctx) {
   const { beach } = ctx.query;
@@ -97,7 +97,7 @@ export async function getServerSideProps(ctx) {
     props: {
       beach,
     },
-  }
+  };
 }
 
-export default BeachPage
+export default BeachPage;

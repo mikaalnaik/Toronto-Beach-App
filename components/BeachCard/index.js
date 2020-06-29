@@ -3,23 +3,25 @@ import Warning from '@/components/Warning/index';
 import LoadingSkeleton from '@/components/LoadingSkeleton/index';
 import moment from 'moment';
 import { beachIDToRouteName } from '@/utils/beachRouteMatch';
-import { useRouter } from 'next/router'
+import { beachPositions } from '@/utils/beachPositions';
+import { useRouter } from 'next/router';
 
 const BeachCard = ({ beach }) => {
-  const { name, eColiCount, sampleDate, beachState, beachID } = beach;
+  const { eColiCount, sampleDate, beachState, beachID } = beach;
+  const beachDisplayName = beachPositions(beachID).displayName;
   const router = useRouter();
 
   const clickBeach = () => {
-    const beachRouteName = beachIDToRouteName(beachID)
-    router.push(`/beach/${beachRouteName}`, `/beach/${beachRouteName}`)
-  }
+    const beachRouteName = beachIDToRouteName(beachID);
+    router.push(`/beach/${beachRouteName}`, `/beach/${beachRouteName}`);
+  };
 
-    return (
+  return (
     <div className={styles['beachcard']} onClick={clickBeach}>
       <img src={`/beach-${beachID}.jpg`} className={styles.image} />
       <div className={styles['beachcard-content']}>
         <Warning beachID={beachID} />
-        <div className={styles.title}>{name}</div>
+        <div className={styles.title}>{beachDisplayName}</div>
         <div className={styles.ecoli}>
           Ecoli: <LoadingSkeleton value={eColiCount} />
         </div>

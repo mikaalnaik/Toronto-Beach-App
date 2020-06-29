@@ -1,7 +1,7 @@
 import GoogleMapReact from 'google-map-react';
-import styles from './BeachMap.module.scss'
+import styles from './BeachMap.module.scss';
 
-const Marker = ({ title }) => <div className={styles.marker}> {title} </div>
+const Marker = ({ title }) => <div className={styles.marker}> {title} </div>;
 
 const BeachMap = ({ positionData, beachName }) => {
   return (
@@ -21,7 +21,7 @@ const BeachMap = ({ positionData, beachName }) => {
         />
       </GoogleMapReact>
     </div>
-  )
-}
+  );
+};
 
 export default BeachMap;
