@@ -11,7 +11,15 @@ export default function Home() {
   useEffect(() => {
     fetch('api/getBeachLatest')
       .then(res => res.text())
-      .then(data => setBeachData(JSON.parse(data)));
+      .then(res => {
+        const parsedData = JSON.parse(res)[0];
+        const { data, CollectionDate } = parsedData;
+        const result = data.map(d => {
+          d.sampleDate = CollectionDate;
+          return d;
+        });
+        setBeachData(result);
+      });
   }, []);
 
   const goToBeach = () => {

@@ -3,5 +3,5 @@ const TorontoBeach = require('torontobeach');
 
 export default async (req, res) => {
   const beachData = await TorontoBeach.getAllBeachesLatest();
-  res.json(beachData);
+  res.status(200).json(beachData)
 };
