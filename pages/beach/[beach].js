@@ -20,7 +20,10 @@ const BeachPage = ({ beach }) => {
       }),
     })
       .then(res => res.json())
-      .then(data => stripLatestReadingFromDataSet(data));
+      .then(data => {
+        console.log(data);
+        stripLatestReadingFromDataSet(data);
+      });
   }, []);
 
   const stripLatestReadingFromDataSet = data => {
