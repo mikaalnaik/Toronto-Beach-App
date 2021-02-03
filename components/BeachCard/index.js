@@ -23,18 +23,20 @@ const BeachCard = ({ beach }) => {
         <Warning beachID={beachID} />
         <div className={styles.title}>{beachDisplayName}</div>
         <div className={styles.ecoli}>
-          Ecoli: <LoadingSkeleton value={eColiCount} />
+          ?
+          {/* 32 E. coli ppm */}
+          {/* <LoadingSkeleton value={eColiCount} /> */}
         </div>
         <div className={styles.beachstatus}>
-          Status:
+          {/* Status:
           <LoadingSkeleton
             value={beachState}
             className={`${styles.status} ${
               eColiCount < 100 ? styles['status-green'] : styles['status-red']
             }`}
-          />
+          /> */}
         </div>
-        <div>Sampled on:{moment(sampleDate).fromNow()}</div>
+        {/* <div>Sampled on:{moment(sampleDate).fromNow()}</div> */}
       </div>
     </div>
   );

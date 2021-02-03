@@ -2,6 +2,8 @@
 
 .home {
   padding: 2rem;
+  padding-top: 0;
+  display: inline-block;
 }
 
 .row {
@@ -31,7 +33,7 @@
 
 .beach-list {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   grid-gap: 2rem;
 
   @include tablet {
