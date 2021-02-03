@@ -12,16 +12,16 @@ const BeachPage = ({ beach }) => {
   const [latestData, setLatestData] = useState(null);
   const [positionData, setPositionData] = useState(beachPositions(beachID));
 
-  useEffect(() => {
-    fetch('../api/getBeachThirtyDays', {
-      method: 'POST',
-      body: JSON.stringify({
-        beachID,
-      }),
-    })
-      .then(res => res.json())
-      .then(data => stripLatestReadingFromDataSet(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch('../api/getBeachThirtyDays', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       beachID,
+  //     }),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => stripLatestReadingFromDataSet(data));
+  // }, []);
 
   const stripLatestReadingFromDataSet = data => {
     const firstDataPoint = data.shift();

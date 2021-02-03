@@ -9,9 +9,9 @@ export default function Home() {
   const [beachData, setBeachData] = useState(BeachPlaceholderData);
 
   useEffect(() => {
-    fetch('api/getBeachLatest')
-      .then(res => res.text())
-      .then(data => setBeachData(JSON.parse(data)));
+    // fetch('api/getBeachLatest')
+    //   .then(res => res.text())
+    //   .then(data => setBeachData(JSON.parse(data)));
   }, []);
 
   const goToBeach = () => {
@@ -26,14 +26,18 @@ export default function Home() {
         <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
       </Head>
       <main>
-        <div className={styles.row}>
+        {/* <div className={styles.row}>
           <h1>Toronto Beach Report</h1>
           <button onClick={goToBeach} className={styles.ferry}>
             <img src='/ferry.png' />Ferry Tickets
           </button>
-        </div>
+        </div> */}
 
-        <h3>Show respect for the health of others and for the beauty of our natural spaces.</h3>
+        <h4>
+          Toronto's beach water quality
+        </h4>
+
+        {/* <h3>Show respect for the health of others and for the beauty of our natural spaces.</h3> */}
         <div className={styles['beach-list']}>
           {beachData.map((beach, index) => (
             <div key={index}>
