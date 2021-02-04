@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-const fetch = require('node-fetch');
-import BeachCard from '@/components/BeachCard/index';
-import { BeachPlaceholderData } from '@/constants/beachPlaceholderData';
-import styles from './Home.module.scss';
+// const fetch = require('node-fetch');
+import BeachCard from '../components/BeachCard';
+import { BeachPlaceholderData } from '../constants/beachPlaceholderData';
+import styles from './home.module.scss';
 
 export default function Home() {
-  const [beachData, setBeachData] = useState(BeachPlaceholderData);
+  const [beachData] = useState(BeachPlaceholderData);
 
   useEffect(() => {
     // fetch('api/getBeachLatest')
@@ -14,10 +14,10 @@ export default function Home() {
     //   .then(data => setBeachData(JSON.parse(data)));
   }, []);
 
-  const goToBeach = () => {
-    var win = window.open('https://secure.toronto.ca/FerryTicketOnline/tickets2/index.jsp', '_blank');
-    win.focus();
-  };
+  // const goToBeach = () => {
+  //   var win = window.open('https://secure.toronto.ca/FerryTicketOnline/tickets2/index.jsp', '_blank');
+  //   win.focus();
+  // };
 
   return (
     <div className={styles.home}>

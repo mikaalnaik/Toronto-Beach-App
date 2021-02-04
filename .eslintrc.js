@@ -3,14 +3,14 @@ module.exports = {
   parser: 'babel-eslint',
   extends: [
     'eslint:recommended',
-    'plugin:cypress/recommended'
   ],
   ignorePatterns: [
     '.next',
     '.now',
     'node_modules',
     'out',
-    'public'
+    'public',
+    '/**/*.d.ts',
   ],
   rules: {
     // 'no-multi-spaces': 'error',
@@ -24,7 +24,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
     'keyword-spacing': 'error',
     'comma-spacing': ['error', { before: false, after: true }],
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
   },
   globals: {
     window: true,
@@ -37,6 +37,6 @@ module.exports = {
     state: true,
     document: true,
     alert: true,
-    localStorage: true
+    localStorage: true,
   },
 };

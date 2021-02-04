@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './BeachPage.module.scss';
 import Link from 'next/link';
-import beachRouteMatch from '@/utils/beachRouteMatch';
+import beachRouteMatch from './utils/beachRouteMatch';
 import { daysAgo } from '@/utils/time';
 import BeachMap from '@/components/GoogleMaps/index';
 import { beachPositions } from '@/utils/beachPositions';
