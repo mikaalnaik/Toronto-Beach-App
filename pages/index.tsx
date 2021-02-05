@@ -3,7 +3,7 @@ import Head from 'next/head';
 // const fetch = require('node-fetch');
 import BeachCard from '../components/BeachCard';
 import { BeachPlaceholderData } from '../constants/beachPlaceholderData';
-import styles from './home.module.scss';
+import styles from './style.module.scss';
 
 export default function Home() {
   const [beachData] = useState(BeachPlaceholderData);
