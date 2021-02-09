@@ -1,27 +1,22 @@
 @import 'styles/imports';
 
 .beachcard {
-  // border: 1px solid lightgray;
   border-radius: 4px;
-  // height: 100%;
+  width: 100%;
+  display: inline-block;
   transform: translateY(0px);
   transition: all 600ms ease;
   cursor: pointer;
-   box-shadow: 0 1px 1px rgba(0,0,0,0.11),
-              0 2px 2px rgba(0,0,0,0.11),
-              0 4px 4px rgba(0,0,0,0.11),
-              0 6px 8px rgba(0,0,0,0.11),
-              0 8px 16px rgba(0,0,0,0.11);
-
-  // &:hover {
-  //   box-shadow: 0 12px 35px 0 rgba(32,52,89,0.25);
-  //   transform: translateY(-20px);
-  // }
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .title {
   font-size: 1.5rem;
   margin-bottom: .5rem;
+}
+
+.image-wrapper {
+  height: 25%;
 }
 
 .ecoli {
@@ -55,7 +50,6 @@
 
 .beachcard-content {
   padding: 1rem;
-  // background: red;
   display: block;
   height: 50%;
 }

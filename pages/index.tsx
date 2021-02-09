@@ -31,11 +31,30 @@ export default function Home() {
           <button onClick={goToBeach} className={styles.ferry}>
             <img src='/ferry.png' />Ferry Tickets
           </button>
-        </div> */}
+        </di.v> */}
 
-        <h4>
+        <span className={styles.row}>
+          <h1>
           Toronto's beach water quality
-        </h4>
+          </h1>
+          <div>
+
+
+            <span>
+          Wind
+            </span>
+            <span>
+          Temp
+            </span>
+            <span>
+            About the Project
+            </span>
+          </div>
+
+        </span>
+        <h5>
+          Last updated: February 9th, 2021
+        </h5>
 
         {/* <h3>Show respect for the health of others and for the beauty of our natural spaces.</h3> */}
         <div className={styles['beach-list']}>

@@ -1,14 +1,14 @@
-import { useRouter } from 'next/router';
-import moment from 'moment';
-// import Warning from 'components/Warning/index';
-import { beachIDToRouteName } from 'utils/beachRouteMatch';
+// import { useRouter } from 'next/router';
+// import moment from 'moment';
+// // import Warning from 'components/Warning/index';
+// import { beachIDToRouteName } from 'utils/beachRouteMatch';
 import { beachPositions } from 'utils/beachPositions';
-import styles from './BeachCard.module.scss';
+import styles from './style.module.scss';
 
 const BeachCard = ({ beach }) => {
-  const { eColiCount, sampleDate, beachState, beachID } = beach;
-  const beachDisplayName = beachPositions(beachID).displayName;
-  const router = useRouter();
+  // const { /*eColiCount, sampleDate, beachState,*/ beachID } = beach;
+  const beachDisplayName = beachPositions(beach.beachID).displayName;
+  // const router = useRouter();
 
   const clickBeach = () => {
     // const beachRouteName = beachIDToRouteName(beachID);
@@ -17,12 +17,14 @@ const BeachCard = ({ beach }) => {
 
   return (
     <div className={styles['beachcard']} onClick={clickBeach}>
-      <img src={`/beach-${beachID}.jpg`} className={styles.image} />
+      <div className={styles['image-wrapper']}>
+        <img src={`/beach-${beach.beachID}.jpg`} className={styles.image} />
+      </div>
       <div className={styles['beachcard-content']}>
         {/* <Warning beachID={beachID} /> */}
         <div className={styles.title}>{beachDisplayName}</div>
         <div className={styles.ecoli}>
-          ?
+          - - -
           {/* 32 E. coli ppm */}
           {/* <LoadingSkeleton value={eColiCount} /> */}
         </div>
