@@ -5,10 +5,6 @@ import BeachCard from '../components/BeachCard';
 import { BeachPlaceholderData } from '../constants/beachPlaceholderData';
 import styles from './style.module.scss';
 
-
-// This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries. See the "Technical details" section.
 export async function getStaticProps() {
   const weather = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=toronto`).then(r => r.json());
 
