@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import fetch from 'node-fetch';
 import BeachCard from '../components/BeachCard';
@@ -23,7 +23,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ weather, date }) {
+export default function Home({ date }) {
 
   console.log({ date });
   const [beachData] = useState(BeachPlaceholderData);
