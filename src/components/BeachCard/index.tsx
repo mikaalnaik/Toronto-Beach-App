@@ -11,7 +11,7 @@ interface Props {
 }
 
 const BeachCard = ({ beach }: Props) => {
-  const { eColi, collectionDate, statusFlag, beachId } = beach;
+  const { eColi, collectionDate, beachId } = beach;
   const beachDisplayName = beachPositions(beachId).displayName;
   // const router = useRouter();
 
