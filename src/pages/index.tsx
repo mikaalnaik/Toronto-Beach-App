@@ -40,8 +40,8 @@ interface Props {
 
 export default function Home({ weather, beaches }: Props) {
 
-  console.log({ beaches });
   const { current: currentWeather } = weather;
+  console.log({ currentWeather });
   const temperature = currentWeather.temp_c;
   const windSpeed = currentWeather.wind_kph;
   const windDirection = currentWeather.wind_dir;
