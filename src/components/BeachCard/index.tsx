@@ -2,12 +2,17 @@
 // import moment from 'moment';
 // // import Warning from 'components/Warning/index';
 // import { beachIDToRouteName } from 'utils/beachRouteMatch';
-import { beachPositions } from 'utils/beachPositions';
+import { Beach } from 'src/types/beaches';
+import { beachPositions } from '../../utils/beachPositions';
 import styles from './style.module.scss';
 
-const BeachCard = ({ beach }) => {
-  // const { /*eColiCount, sampleDate, beachState,*/ beachID } = beach;
-  const beachDisplayName = beachPositions(beach.beachID).displayName;
+interface Props {
+  beach: Beach
+}
+
+const BeachCard = ({ beach }: Props) => {
+  const { eColi, collectionDate, statusFlag, beachId } = beach;
+  const beachDisplayName = beachPositions(beachId).displayName;
   // const router = useRouter();
 
   const clickBeach = () => {
@@ -18,26 +23,18 @@ const BeachCard = ({ beach }) => {
   return (
     <div className={styles['beachcard']} onClick={clickBeach}>
       <div className={styles['image-wrapper']}>
-        <img src={`/beach-${beach.beachID}.jpg`} className={styles.image} />
+        <img src={`/beach-${beach.beachId}.jpg`} className={styles.image} />
       </div>
       <div className={styles['beachcard-content']}>
         {/* <Warning beachID={beachID} /> */}
         <div className={styles.title}>{beachDisplayName}</div>
         <div className={styles.ecoli}>
-          - - -
-          {/* 32 E. coli ppm */}
+          {eColi} E. coli ppm
           {/* <LoadingSkeleton value={eColiCount} /> */}
         </div>
         <div className={styles.beachstatus}>
-          {/* Status:
-          <LoadingSkeleton
-            value={beachState}
-            className={`${styles.status} ${
-              eColiCount < 100 ? styles['status-green'] : styles['status-red']
-            }`}
-          /> */}
         </div>
-        {/* <div>Sampled on:{moment(sampleDate).fromNow()}</div> */}
+        {collectionDate}
       </div>
     </div>
   );
