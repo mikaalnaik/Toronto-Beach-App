@@ -44,3 +44,12 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+
+.weather-stats {
+  display: flex;
+
+  div {
+    padding: 0 1em;
+  }
+}

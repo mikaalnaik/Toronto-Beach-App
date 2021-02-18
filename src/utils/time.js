@@ -1,5 +1,5 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export function daysAgo(stringTime) {
-  return moment(stringTime).fromNow()
+  return dayjs(stringTime).fromNow();
 }
