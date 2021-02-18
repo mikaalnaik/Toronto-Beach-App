@@ -21,24 +21,7 @@
 
 .ecoli {
   font-weight: bold;
-  margin-bottom: .5rem;
-}
-
-.beachstatus {
-  margin-bottom: .5rem;
-}
-
-.status {
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.status-green {
-  background-color: green;
-}
-.status-red {
-  background-color: red;
+  font-size: 1.25rem;
 }
 
 .image {
@@ -52,4 +35,16 @@
   padding: 1rem;
   display: block;
   height: 50%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collection-date {
+  font-size: .65rem;
+  text-align: right;
+  margin-bottom: 1rem;
 }

@@ -1,9 +1,12 @@
 // import { useRouter } from 'next/router';
-// // import Warning from 'components/Warning/index';
-// import { beachIDToRouteName } from 'utils/beachRouteMatch';
 import { Beach } from 'src/types/beaches';
 import { beachPositions } from '../../utils/beachPositions';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import styles from './style.module.scss';
+import BeachStatus from './beach-status';
+
+dayjs.extend(relativeTime);
 
 interface Props {
   beach: Beach
@@ -25,15 +28,23 @@ const BeachCard = ({ beach }: Props) => {
         <img src={`/beach-${beach.beachId}.jpg`} className={styles.image} />
       </div>
       <div className={styles['beachcard-content']}>
-        {/* <Warning beachID={beachID} /> */}
-        <div className={styles.title}>{beachDisplayName}</div>
-        <div className={styles.ecoli}>
-          {eColi} E. coli ppm
-          {/* <LoadingSkeleton value={eColiCount} /> */}
-        </div>
-        <div className={styles.beachstatus}>
-        </div>
-        {collectionDate}
+        <section className={styles.row}>
+          <div className={styles.title}>{beachDisplayName}</div>
+          <div>
+            <div className={styles['collection-date']}>
+              {dayjs(collectionDate).fromNow()}
+            </div>
+          </div>
+        </section>
+        <section className={styles.row}>
+          <BeachStatus eColi={eColi} />
+          <div>
+            <div className={styles.ecoli}>
+              {eColi && <> {eColi} E. coli </>}
+              {!eColi && <> Not Tested </>}
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

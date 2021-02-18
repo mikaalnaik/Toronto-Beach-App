@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import fetch from 'node-fetch';
-import BeachCard from '../components/BeachCard';
+import BeachCard from '../components/beach-card';
 import styles from './style.module.scss';
 import dayjs from 'dayjs';
 import { Beach, RawBeach } from 'src/types/beaches';
