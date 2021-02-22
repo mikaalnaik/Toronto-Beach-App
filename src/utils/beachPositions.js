@@ -99,6 +99,15 @@ export function beachPositions(beachID) {
         longitude: -79.118217,
       },
     },
+    12: {
+      name: 'Ontario Place West Beach',
+      map: '43.793217-79.118217',
+      displayName: 'Ontario Place',
+      coordinates: {
+        latitude: 43.6272,
+        longitude: -79.42052,
+      },
+    },
   };
   return beachPositionData[beachID];
 }

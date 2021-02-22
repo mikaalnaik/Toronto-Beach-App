@@ -15,6 +15,35 @@ import { Beach, RawBeach } from 'src/types/beaches';
 export async function getStaticProps() {
   const weather = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=toronto`).then(r => r.json());
   const { lastUpdate } = await fetch('https://secure.toronto.ca/opendata/adv/last_update/v1?format=json').then(res => res.json());
+  const swimGuideData = await fetch('http://translate.theswimguide.org/toronto/json').then(res => res.json());
+
+  const { records } = swimGuideData;
+  const ontarioPlaceReadings = records.map(record => {
+    if (record.location.name === 'Ontario_Place') {
+      return record;
+    }
+  }).filter(val => val);
+
+  const latestOntarioPlaceReading =  ontarioPlaceReadings.reduce((latest, reading) => {
+    if (!latest) {
+      return reading;
+    } else if (new Date(latest.sample.collectionTime) < new Date(reading.sample.collectionTime)) {
+      return reading;
+    } else {
+      return latest;
+    }
+  });
+
+  const latestFormattedOntarioPlaceReading = {
+    beachId: 12,
+    beachName: 'Ontario Place West Beach',
+    eColi: latestOntarioPlaceReading.sample.result,
+    advisory: latestOntarioPlaceReading.sample.result < 100 ? 'Safe' : 'Unsafe',
+    statusFlag: latestOntarioPlaceReading.sample.result < 100 ? 'Safe' : 'Unsafe',
+    collectionDate: latestOntarioPlaceReading.sample.collectionTime,
+  };
+
+
   const endDate = dayjs(lastUpdate).format('YYYY-MM-DD');
   const startDate = dayjs(lastUpdate).subtract(1, 'day').format('YYYY-MM-DD');
   const beachDataArray = await fetch(`https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${endDate}`).then(res => res.json());
@@ -23,12 +52,14 @@ export async function getStaticProps() {
     return { ...beach, collectionDate };
   });
 
+  beaches.splice(2, 0, latestFormattedOntarioPlaceReading);
+
   return {
     props: {
       beaches,
       weather,
     },
-    revalidate: 1000, // In seconds
+    revalidate: 3600, // In seconds
   };
 }
 
