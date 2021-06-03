@@ -67,6 +67,7 @@ export async function getStaticProps() {
 interface Props {
   weather: any;
   beaches: Beach[];
+  ontarioPlaceBeach: Beach;
 }
 
 export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
