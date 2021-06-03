@@ -5,7 +5,7 @@ import BeachCard from '../components/beach-card';
 import styles from './style.module.scss';
 import dayjs from 'dayjs';
 import { Beach, RawBeach } from 'src/types/beaches';
-import Footer from 'src/components/footer';
+// import Footer from 'src/components/footer';
 
 
 // Swim Drink Fish JSON data. Ontario Place beach! Need illustration

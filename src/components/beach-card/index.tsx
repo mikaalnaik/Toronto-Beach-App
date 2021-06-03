@@ -9,7 +9,7 @@ import BeachStatus from './beach-status';
 dayjs.extend(relativeTime);
 
 interface Props {
-  beach: Beach
+  beach: Beach;
   hideImage?: boolean;
 }
 
