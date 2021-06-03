@@ -5,6 +5,7 @@ import BeachCard from '../components/beach-card';
 import styles from './style.module.scss';
 import dayjs from 'dayjs';
 import { Beach, RawBeach } from 'src/types/beaches';
+import Footer from 'src/components/footer';
 
 
 // Swim Drink Fish JSON data. Ontario Place beach! Need illustration
@@ -17,29 +18,28 @@ export async function getStaticProps() {
   const { lastUpdate } = await fetch('https://secure.toronto.ca/opendata/adv/last_update/v1?format=json').then(res => res.json());
   const swimGuideData = await fetch('http://translate.theswimguide.org/toronto/json').then(res => res.json());
 
-  const { records } = swimGuideData;
-  const ontarioPlaceReadings = records.map(record => {
+  const ontarioPlaceReadings = swimGuideData.records.map(record => {
     if (record.location.name === 'Ontario_Place') {
       return record;
     }
   }).filter(val => val);
 
-  const latestOntarioPlaceReading =  ontarioPlaceReadings.reduce((latest, reading) => {
+  const latestOntarioPlaceReading =  ontarioPlaceReadings.reduce((latest, reading ) => {
     if (!latest) {
       return reading;
-    } else if (new Date(latest.sample.collectionTime) < new Date(reading.sample.collectionTime)) {
-      return reading;
     } else {
-      return latest;
+      return new Date(latest.sample.collectionTime) < new Date(reading.sample.collectionTime) ? reading : latest;
     }
   });
 
+  const ontarioPlaceResults = latestOntarioPlaceReading.sample.result;
+
   const latestFormattedOntarioPlaceReading = {
     beachId: 12,
+    eColi: ontarioPlaceResults,
     beachName: 'Ontario Place West Beach',
-    eColi: latestOntarioPlaceReading.sample.result,
-    advisory: latestOntarioPlaceReading.sample.result < 100 ? 'Safe' : 'Unsafe',
-    statusFlag: latestOntarioPlaceReading.sample.result < 100 ? 'Safe' : 'Unsafe',
+    advisory: ontarioPlaceResults < 100 ? 'Safe' : 'Unsafe',
+    statusFlag: 'Unofficial beach',
     collectionDate: latestOntarioPlaceReading.sample.collectionTime,
   };
 
@@ -52,11 +52,12 @@ export async function getStaticProps() {
     return { ...beach, collectionDate };
   });
 
-  beaches.splice(2, 0, latestFormattedOntarioPlaceReading);
+  // beaches.splice(2, 0, latestFormattedOntarioPlaceReading);
 
   return {
     props: {
       beaches,
+      ontarioPlaceBeach: latestFormattedOntarioPlaceReading,
       weather,
     },
     revalidate: 3600, // In seconds
@@ -68,14 +69,12 @@ interface Props {
   beaches: Beach[];
 }
 
-export default function Home({ weather, beaches }: Props) {
-
+export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
   const { current: currentWeather } = weather;
   const temperature = currentWeather.temp_c;
   const windSpeed = currentWeather.wind_kph;
   const windDirection = currentWeather.wind_dir;
   const [beachData] = useState(beaches);
-
 
   // const goToBeach = () => {
   //   var win = window.open('https://secure.toronto.ca/FerryTicketOnline/tickets2/index.jsp', '_blank');
@@ -89,16 +88,16 @@ export default function Home({ weather, beaches }: Props) {
         <meta name="description" content="The easiest way to access information about Toronto's 11 beaches and they ferry schedule"></meta>
       </Head>
       <main>
-        <section className={styles.row}>
-          <h1>
-          Toronto's beach water quality
+        <section className={styles['title-section']}>
+          <h1 className={styles.title}>
+            Toronto Beaches
           </h1>
           <div className={styles['weather-stats']}>
             <div>
-              Wind {windSpeed}km/h {windDirection}
+              {temperature}°C
             </div>
             <div>
-              Temp {temperature}°C
+              {windSpeed} km/h {windDirection}
             </div>
           </div>
 
@@ -108,11 +107,15 @@ export default function Home({ weather, beaches }: Props) {
         <div className={styles['beach-list']}>
           {beachData.map((beach, index) => (
             <div key={index}>
-              <BeachCard beach={beach} />
+              <BeachCard beach={beach} key={index} />
             </div>
           ))}
         </div>
+        <div className={styles['beach-list']}>
+          <BeachCard beach={ontarioPlaceBeach} key={12} hideImage={true} />
+        </div>
       </main>
+      {/* <Footer /> */}
     </div>
   );
 }

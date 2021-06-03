@@ -1,16 +1,28 @@
 @import 'src/styles/imports';
 
 .home {
-  padding: 4rem;
+  padding: 2rem;
+  position: relative;
   padding-top: 2rem;
   display: inline-block;
+
+  @include tablet {
+    padding: 4rem
+  }
+  @include desktop {
+    padding: 4rem
+  }
 }
 
-.row {
+.title-section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
 }
 
 .ferry {
@@ -36,6 +48,7 @@
   grid-template-columns: 100%;
   padding-top: 2rem;
   grid-gap: 4rem;
+  margin-bottom: 3rem;
 
   @include tablet {
     grid-template-columns: 1fr 1fr;
@@ -50,6 +63,11 @@
   display: flex;
 
   div {
-    padding: 0 1em;
+    margin-right: 1rem;
   }
+}
+
+
+.card-container {
+
 }
