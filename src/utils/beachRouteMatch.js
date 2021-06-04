@@ -12,8 +12,9 @@ export default function beachRouteMatch(beachID){
     kewbalmy: 9,
     bluffers: 10,
     rouge: 11,
-  }
-  return beachNamesHash[beachID]
+    'ontario-place': 12,
+  };
+  return beachNamesHash[beachID];
 }
 
 export function beachIDToRouteName(id) {
@@ -29,6 +30,7 @@ export function beachIDToRouteName(id) {
     9: 'kewbalmy',
     10: 'bluffers',
     11: 'rouge',
-  }
-  return beachNamesHash[id]
+    12: 'ontario-place',
+  };
+  return beachNamesHash[id];
 }

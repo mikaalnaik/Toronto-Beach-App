@@ -5,6 +5,8 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import styles from './style.module.scss';
 import BeachStatus from './beach-status';
+// import { useRouter } from 'next/router';
+// import { beachIDToRouteName } from '../../utils/beachRouteMatch';
 
 dayjs.extend(relativeTime);
 
@@ -19,7 +21,7 @@ const BeachCard = ({ beach, hideImage }: Props) => {
   // const router = useRouter();
 
   const clickBeach = () => {
-    // const beachRouteName = beachIDToRouteName(beachID);
+    // const beachRouteName = beachIDToRouteName(beachId);
     // router.push(`/beach/${beachRouteName}`, `/beach/${beachRouteName}`);
   };
 
