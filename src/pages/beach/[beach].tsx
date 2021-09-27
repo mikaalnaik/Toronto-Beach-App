@@ -71,7 +71,7 @@ const StatCard = ({ data }) => {
             E.coli: {eColiCount}
           </div>
         </div>
-        <video className={styles.video} video autoPlay loop muted>
+        <video className={styles.video} autoPlay loop muted>
           <source id="mp4" src="/waves.mp4" type="video/mp4"/>
         </video>
       </div>
