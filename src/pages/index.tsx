@@ -4,7 +4,8 @@ import fetch from 'node-fetch';
 import BeachCard from '../components/beach-card';
 import styles from './style.module.scss';
 import dayjs from 'dayjs';
-import { Beach, RawBeach } from 'src/types/beaches';
+
+import type { Beach, RawBeach } from 'src/types/beaches';
 // import Footer from 'src/components/footer';
 
 

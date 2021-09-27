@@ -12,6 +12,9 @@ module.exports = {
     'public',
     '/**/*.d.ts',
   ],
+  env: {
+    jest: true,
+  },
   rules: {
     // 'no-multi-spaces': 'error',
     semi: 'error',
@@ -38,5 +41,6 @@ module.exports = {
     document: true,
     alert: true,
     localStorage: true,
+    jest: true,
   },
 };
