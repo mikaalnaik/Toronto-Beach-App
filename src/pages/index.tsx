@@ -5,6 +5,7 @@ import getWeather from 'src/data/store/weather';
 import styles from './style.module.scss';
 
 import type { Beach } from 'src/types/beaches';
+import WeatherHeader from 'src/components/weather-header';
 
 // Swim Drink Fish JSON data. Ontario Place beach! Need illustration
 //  Published Thurssday afternoons from July 23rd to ???.
@@ -32,10 +33,6 @@ interface Props {
 }
 
 export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
-  const { current: currentWeather } = weather;
-  const temperature = currentWeather.temp_c;
-  const windSpeed = currentWeather.wind_kph;
-  const windDirection = currentWeather.wind_dir;
 
   return (
     <div className={styles.home}>
@@ -48,14 +45,7 @@ export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
           <h1 className={styles.title}>
             Toronto Beaches
           </h1>
-          <div className={styles['weather-stats']}>
-            <div>
-              {temperature}°C
-            </div>
-            <div>
-              {windSpeed} km/h {windDirection}
-            </div>
-          </div>
+          <WeatherHeader weather={weather.current} />
 
         </section>
 
