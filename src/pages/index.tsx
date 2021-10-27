@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import fetch from 'node-fetch';
 import BeachCard from '../components/beach-card';
+import { getLatestFromCity, getOntarioPlaceReading } from 'src/data/store/beaches';
+import getWeather from 'src/data/store/weather';
 import styles from './style.module.scss';
-import dayjs from 'dayjs';
 
-import type { Beach, RawBeach } from 'src/types/beaches';
-// import Footer from 'src/components/footer';
-
+import type { Beach } from 'src/types/beaches';
 
 // Swim Drink Fish JSON data. Ontario Place beach! Need illustration
 
@@ -15,50 +13,14 @@ import type { Beach, RawBeach } from 'src/types/beaches';
 // http://translate.theswimguide.org/toronto/json
 
 export async function getStaticProps() {
-  const weather = await fetch(`http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=toronto`).then(r => r.json());
-  const { lastUpdate } = await fetch('https://secure.toronto.ca/opendata/adv/last_update/v1?format=json').then(res => res.json());
-  const swimGuideData = await fetch('http://translate.theswimguide.org/toronto/json').then(res => res.json());
-
-  const ontarioPlaceReadings = swimGuideData.records.map(record => {
-    if (record.location.name === 'Ontario_Place') {
-      return record;
-    }
-  }).filter(val => val);
-
-  const latestOntarioPlaceReading =  ontarioPlaceReadings.reduce((latest, reading ) => {
-    if (!latest) {
-      return reading;
-    } else {
-      return new Date(latest.sample.collectionTime) < new Date(reading.sample.collectionTime) ? reading : latest;
-    }
-  });
-
-  const ontarioPlaceResults = latestOntarioPlaceReading.sample.result;
-
-  const latestFormattedOntarioPlaceReading = {
-    beachId: 12,
-    eColi: ontarioPlaceResults,
-    beachName: 'Ontario Place West Beach',
-    advisory: ontarioPlaceResults < 100 ? 'Safe' : 'Unsafe',
-    statusFlag: 'Unofficial beach',
-    collectionDate: latestOntarioPlaceReading.sample.collectionTime,
-  };
-
-
-  const endDate = dayjs(lastUpdate).format('YYYY-MM-DD');
-  const startDate = dayjs(lastUpdate).subtract(1, 'day').format('YYYY-MM-DD');
-  const beachDataArray = await fetch(`https://secure.toronto.ca/opendata/adv/beach_results/v1?format=json&startDate=${startDate}&endDate=${endDate}`).then(res => res.json());
-  const collectionDate = beachDataArray[0].CollectionDate;
-  const beaches = beachDataArray[0].data.map((beach: RawBeach) => {
-    return { ...beach, collectionDate };
-  });
-
-  // beaches.splice(2, 0, latestFormattedOntarioPlaceReading);
+  const weather = await getWeather();
+  const beaches = await getLatestFromCity();
+  const ontarioPlaceBeach = await getOntarioPlaceReading();
 
   return {
     props: {
       beaches,
-      ontarioPlaceBeach: latestFormattedOntarioPlaceReading,
+      ontarioPlaceBeach,
       weather,
     },
     revalidate: 3600, // In seconds
