@@ -13,7 +13,7 @@
     "dayjs": "^1.10.4",
     "google-map-react": "^1.1.7",
     "isomorphic-unfetch": "^3.1.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "lodash.get": "^4.4.2",
     "next": "^12.0.0",
     "node-fetch": "^2.6.1",
