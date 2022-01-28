@@ -15,7 +15,7 @@
     "isomorphic-unfetch": "^3.1.0",
     "lodash": "^4.17.19",
     "lodash.get": "^4.4.2",
-    "next": "^12.0.0",
+    "next": "^12.0.9",
     "node-fetch": "^2.6.1",
     "performance-now": "^2.1.0",
     "react": "^18.0.0-alpha-4298ddbc5-20211023",
