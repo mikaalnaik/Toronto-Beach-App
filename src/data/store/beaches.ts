@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import dayjs from 'dayjs';
-import type { Beach, RawBeach } from 'src/types/beaches';
+import type { RawBeach } from 'src/types/beaches';
 
 
 export const getLatestFromCity = async () => {

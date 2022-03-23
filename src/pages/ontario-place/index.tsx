@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import Head from 'next/head';
 import fetch from 'node-fetch';
-import BeachCard from '../../components/beach-card';
 import styles from './style.module.scss';
 import dayjs from 'dayjs';
 
@@ -71,13 +69,7 @@ interface Props {
   ontarioPlaceBeach: Beach;
 }
 
-export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
-  const { current: currentWeather } = weather;
-  const temperature = currentWeather.temp_c;
-  const windSpeed = currentWeather.wind_kph;
-  const windDirection = currentWeather.wind_dir;
-  const [beachData] = useState(beaches);
-
+export default function Home({ ontarioPlaceBeach }: Props) {
 
   console.log('ontarioPlaceBeach', ontarioPlaceBeach);
 
