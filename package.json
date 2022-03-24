@@ -16,7 +16,7 @@
     "lodash": "^4.17.19",
     "lodash.get": "^4.4.2",
     "next": "^12.0.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "performance-now": "^2.1.0",
     "react": "^18.0.0-alpha-4298ddbc5-20211023",
     "react-charts": "^2.0.0-beta.7",
