@@ -34,6 +34,12 @@ interface Props {
 
 export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
 
+  const beachCards = beaches.map((beach, index) => (
+    <div key={index}>
+      <BeachCard beach={beach} key={index} />
+    </div>
+  ));
+
   return (
     <div className={styles.home}>
       <Head>
@@ -51,14 +57,8 @@ export default function Home({ weather, beaches, ontarioPlaceBeach }: Props) {
 
         <h5>Show respect for the health of others and for the beauty of our natural spaces.</h5>
         <div className={styles['beach-list']}>
-          {beaches.map((beach, index) => (
-            <div key={index}>
-              <BeachCard beach={beach} key={index} />
-            </div>
-          ))}
-        </div>
-        <div className={styles['beach-list']}>
-          <BeachCard beach={ontarioPlaceBeach} key={12} hideImage={true} />
+          {beachCards}
+          <BeachCard beach={ontarioPlaceBeach} key={12} imgSrc={'/beach-11.jpg'} />
         </div>
       </main>
       {/* <Footer /> */}
