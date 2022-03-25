@@ -1,5 +1,10 @@
 
 
+# This is Deprecated!!!!
+
+
+Hi! We've move the project to a monorepo over [/beach](https://github.com/mikaalnaik/beach)
+
 
 
 # Toronto Beach App
